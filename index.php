@@ -1,38 +1,11 @@
 <?php
-    /**
-     * Created by PhpStorm.
-     * User: anthonyrodrigues
-     * Date: 6/28/18
-     * Time: 2:28 PM
-     */
 
-    $teste = file_get_contents('./public/layout_21.json');
-    $teste = json_decode($teste);
-    baguncinhaEmLosAngeles($teste);
-    function imprime($texto, $value)
-    {
-        var_dump($texto);
-        if (is_array($value)) {
-            foreach ($value as $val) {
-                imprime($texto, $val);
-            }
-        }
-        $teste = '<p>' . $texto . ':' . $value . '</p>';
+require_once './DocsGenerator.php';
+$generator = new DocsGenerator();
+$generator->generate();
 
-    }
+header ('./Layout.md');
 
-    function baguncinhaEmLosAngeles($teste)
-    {
-        $validacao = [];
-        foreach ($teste as $te => $value) {
-            if (is_object($value)) {
-                baguncinhaEmLosAngeles($value);
-            }
-            imprime($te, $value);
-        }
-    }
-//
-//
 //    $layoutNome
 //    =========================
 //
